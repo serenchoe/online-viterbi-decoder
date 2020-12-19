@@ -510,57 +510,14 @@ def printArray(array):
 
 
 
-# if __name__ == '__main__':
-#    # observations = [3, 2, 0, 3, 1, 3, 3, 1, 2, 2]
-#    # observations = [ 1, 1, 1, 1, 1, 1, 1, 2, 2, 2 ]
-#    # observations = [ 1, 3, 3, 2, 0, 2, 0, 2, 2, 0 ]
-#    # observations = [ 1, 2, 3, 1, 3, 2, 3, 2, 1, 3 ]
-#    observations = [ 2, 0, 3, 2, 3, 2, 3, 0, 1, 0 ]
-#    # observations = [0] * T
 
-#    # observed_states =states_list = np.array([1, 2, 3, 8, 12, 17, 24, 25, 30, 25, 26, 27, 31], dtype=int) 
-#    # observations = (observed_states - 1).tolist()
-
-#    previous = 0
-
-#    online_viterbi_initialization(0)
-
-#    for i in range(T):
-     
-
-#       # observations[i] = int( ( previous + (2 * random.random())%2 ) % K )
-#       # previous = observations[i]
-      
-#       update(i, observations[i])
-
-
-
-#    traceback_last_part()
-
-#    print("\nobservations:  ", end='')
-#    printArray(observations)
-#    std_viterbi(observations)
-#    print("\nStd Viterbi window:  ", end='')
-#    printArray(optimalPath)
-#    print("\nOnline Viterbi window:  ", end='')
-#    printArray(decoded_stream)
-
-#    print("\n\n")
 
 
 
 
 if __name__ == '__main__':
-   # observations = [3, 2, 0, 3, 1, 3, 3, 1, 2, 2]
-   # observations = [ 1, 1, 1, 1, 1, 1, 1, 2, 2, 2 ]
-   # observations = [ 1, 3, 3, 2, 0, 2, 0, 2, 2, 0 ]
-   # observations = [ 1, 2, 3, 1, 3, 2, 3, 2, 1, 3 ]
-   # observations = [ 2, 0, 3, 2, 3, 2, 3, 0, 1, 0 ]
+
    observations = [0] * T
-
-   # observed_states =states_list = np.array([1, 2, 3, 8, 12, 17, 24, 25, 30, 25, 26, 27, 31], dtype=int) 
-   # observations = (observed_states - 1).tolist()
-
    previous = 0
 
    online_viterbi_initialization(0)
