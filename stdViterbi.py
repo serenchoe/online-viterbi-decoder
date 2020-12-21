@@ -421,12 +421,12 @@ def std_viterbi_initialization(observations):
     #    scores[i][0] = initial[i]*E[i][observations[0]]
 
     for j in range(K):
-        max = -1
-        aux = -1
+        max = B
+        aux = B
         max_index = 0
 
         for i in range(K):
-            aux = initial[i] * A[i][j] * E[j][observations[0]];
+            aux = bounded_log_sum( bounded_log(initial[i]), bounded_log(A[i][j]), bounded_log(E[j][observations[0]]) )
             if (aux > max):
                 max = aux
                 max_index = i
@@ -436,17 +436,16 @@ def std_viterbi_initialization(observations):
 
 
 def std_viterbi_recursion(observations):
-    max = -1
-    aux = -1
+
     max_index = 0
     for t in range(1, T):
         for j in range(K):
-            max = -1
-            aux = -1
+            max = B
+            aux = B
             max_index = 0
 
             for i in range(K):
-                aux = scores[i][t - 1] * A[i][j] * E[j][observations[t]];
+                aux = bounded_log_sum( scores[i][t - 1], bounded_log(A[i][j]), bounded_log(E[j][observations[t]]) )
                 if (aux > max):
                     max = aux
                     max_index = i
@@ -457,7 +456,7 @@ def std_viterbi_recursion(observations):
 
 def std_viterbi_termination():
     max_index = 0
-    max = 0
+    max = B
     for j in range(K):
         if (scores[j][T - 1] > max):
             max = scores[j][T - 1]
@@ -505,7 +504,7 @@ if __name__ == '__main__':
             printArray(optimalPath)
             print("\nOnline Viterbi window:  ", end='')
             printArray(decoded_stream)
-            print("\n",(optimalPath[0:min(T,200)] == decoded_stream[0:min(T,200)]))
+            print("\n",(optimalPath[0:min(T,1000)] == decoded_stream[0:min(T,1000)]))
             print("\n\n")
 
             # for fresh new start of online viterbi decoding
